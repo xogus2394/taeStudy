@@ -1,30 +1,28 @@
 package com.techeeresc.tab.domain.bookmark.entity;
 
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import com.tcheeresc.tab.global.common.Timestamped;
+import com.techeeresc.tab.global.common.Timestamped;
+import lombok.*;
+import com.techeeresc.tab.global.common.Timestamped;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Bookmark")
+@Builder
 @Entity
-@Data
-public class Bookmark  {
+public class Bookmark extends Timestamped {
     @Id //PK를 의미
     @GeneratedValue(strategy = GenerationType.IDENTITY) //MariaDB에서 사용하게된다
     @Column(nullable = false, columnDefinition = "INT UNSIGNED")
-    private int id;
+    private Long id;
     @Column(name = "member_id", nullable = false, columnDefinition = "INT UNSIGNED")
-    private int memberId;
+    private Long memberId;
     @Column(name = "post_id", nullable = false, columnDefinition = "INT UNSIGNED")
-    private int postId;
-    @Builder
-    public Bookmark(int memberId, int postId){
-        this.memberId = memberId;
-        this.postId = postId;
-    }
+    private Long postId;
 }

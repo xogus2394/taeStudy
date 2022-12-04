@@ -4,10 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-@Data
+
 @Builder
+@Data
 @AllArgsConstructor
 public class BookmarkCreateRequestDto {
-    public int postId;
-    public int memberId;
+    public Long postId;
+    public Long memberId;
 }
